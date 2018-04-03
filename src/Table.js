@@ -3,7 +3,7 @@
  */
 
 'use strict';
-const EOL = require('os').EOL;
+const { EOL } = require('os');
 const StringBuilder = require('./StringBuilder');
 
 class Table {
@@ -98,5 +98,4 @@ class Table {
   }
 }
 
-module
-  .exports = Table;
+module.exports = Table;

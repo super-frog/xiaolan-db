@@ -76,7 +76,7 @@ class Migrate {
           if (tableInstance.fieldSet[diff.fields.change[k]].autoIncrease === true) {
             let hasPrimary = await this.hasPrimary(tableInstance.tableName());
             if (hasPrimary.length) {
-              emergencySQL.add(tableInstance.alter(diff.fields.change[k], 'change').replace('auto_increment',''));
+              emergencySQL.add(tableInstance.alter(diff.fields.change[k], 'change').replace('auto_increment', ''));
               emergencySQL.add(tableInstance.dropPrimary());
             }
             emergencySQL.add(tableInstance.addIndex('', [tableInstance.fieldSet[diff.fields.change[k]].fieldName], 'primary key'));
@@ -301,12 +301,12 @@ class Migrate {
         continue;
       }
 
-      if (fieldScheme.rules[0] === 'number' && k == 'defaultValue') {
+      if (fieldScheme.rules[0] === 'number' && k === 'defaultValue') {
         fieldScheme[k] = (fieldScheme[k] !== undefined) ? Number.parseFloat(fieldScheme[k]) : fieldScheme[k];
         fieldDB[k] = (fieldDB[k] !== undefined) ? Number.parseFloat(fieldDB[k]) : fieldDB[k];
       }
 
-      flag = flag || (fieldScheme[k] != fieldDB[k]);
+      flag = flag || (fieldScheme[k] !== fieldDB[k]);
       if (flag) {
         break;
       }
