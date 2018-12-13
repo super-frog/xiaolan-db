@@ -1,5 +1,3 @@
-"use strict";
-
 class Field {
   constructor() {
     this.fieldName = '';
@@ -26,7 +24,7 @@ class Field {
   }
 
   default(value) {
-    this.defaultValue = value + '';
+    this.defaultValue = `${value}`;
     return this;
   }
 
@@ -123,18 +121,6 @@ class Field {
     return this;
   }
 
-  // double(l, r, unsigned = false) {
-  //   this.unsigned = unsigned;
-  //   this.type = `double(${l},${r})`;
-  //   return this;
-  // }
-
-  // decimal(l, r, unsigned = false) {
-  //   this.unsigned = unsigned;
-  //   this.type = `decimal(${l},${r})`;
-  //   return this;
-  // }
-
   char(len = 64) {
     this.type = 'char(' + (Number.isInteger(len) ? len : 64) + ')';
     this.rules = ['string', 0, len];
@@ -153,17 +139,17 @@ class Field {
   }
 
   toString(endWith = ',') {
-    return `\`${this.fieldName}\` ${this.type} ${this.unsigned && this.isNum() ? "unsigned" : ""} ${this.isAllowNull} ${this.defaultValue != undefined ? `default '${this.defaultValue}'` : ""} ${this.autoIncrease ? 'auto_increment' : ''} ${this.fieldComment ? `comment '${this.fieldComment}'` : ''}${endWith}`;
+    return `\`${this.fieldName}\` ${this.type} ${this.unsigned && this.isNum() ? 'unsigned' : ''} ${this.isAllowNull} ${this.defaultValue != undefined ? `default '${this.defaultValue}'` : ''} ${this.autoIncrease ? 'auto_increment' : ''} ${this.fieldComment ? `comment '${this.fieldComment}'` : ''}${endWith}`;
   }
 
   isNum() {
-    return ['int', 'tinyint', 'smallint', 'bigint', 'mediumint'].includes(this.type)
+    return ['int', 'tinyint', 'smallint', 'bigint', 'mediumint'].includes(this.type);
   }
 }
 
 module.exports = {
   name: (n) => {
-    let f = new Field();
+    const f = new Field();
     f.name(n);
     return f;
   }

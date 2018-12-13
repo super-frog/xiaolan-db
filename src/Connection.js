@@ -1,8 +1,4 @@
-/**
- * Created by lanhao on 2017/9/17.
- */
 
-'use strict';
 const mysql = require('fy-mysql');
 
 class Connection {
@@ -18,7 +14,7 @@ class Connection {
       host: this.config.DB_HOST,
       user: this.config.DB_USER,
       port: this.config.DB_PORT,
-      password: this.config.DB_PASSWORD + '',
+      password: `${this.config.DB_PASSWORD}`,
       database: this.config.DB_NAME
     });
   }

@@ -11,5 +11,8 @@
   "license": "ISC",
   "dependencies": {
     "fy-mysql": "^0.2.13"
+  },
+  "devDependencies": {
+    "eslint": "^5.10.0"
   }
 }

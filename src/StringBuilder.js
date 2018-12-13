@@ -1,9 +1,3 @@
-/**
- * Created by lanhao on 2017/8/25.
- */
-
-'use strict';
-
 class StringBuilder {
   constructor(separator = ' ') {
     this.separator = separator;

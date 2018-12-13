@@ -1,16 +1,9 @@
-/**
- * Created by lanhao on 2017/8/25.
- */
-
-'use strict';
-
 const mysql = require('fy-mysql');
 const StringBuilder = require('./StringBuilder');
 const Connection = require('./Connection');
 
 class Migrate {
   constructor(config = null) {
-    //todo 多路连接
     this.dbConfig = config || {
       DB_HOST: process.env.DB_HOST,
       DB_PORT: process.env.DB_PORT,
@@ -44,7 +37,7 @@ class Migrate {
           } else {
             resolved(r);
           }
-        })
+        });
       });
     } else {
       //alter table
@@ -108,7 +101,7 @@ class Migrate {
               if (e) {
                 rejected('emergency query error!' + e.toString());
               } else {
-                resolved(r)
+                resolved(r);
               }
             });
           });
@@ -121,7 +114,7 @@ class Migrate {
                 if (e) {
                   rejected('query error!' + e.toString());
                 } else {
-                  resolved(r)
+                  resolved(r);
                 }
               });
             });
@@ -214,7 +207,6 @@ class Migrate {
 
     }
     return 'done';
-
   }
 
   async getTableSchema(tableName) {

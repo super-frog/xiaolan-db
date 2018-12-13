@@ -1,14 +1,9 @@
-/**
- * Created by lanhao on 2017/8/24.
- */
-
-'use strict';
 const { EOL } = require('os');
 const StringBuilder = require('./StringBuilder');
 
 class Table {
   constructor(name, fields, options = []) {
-    name = name.replace(/\-/g, '_')
+    name = name.replace(/\-/g, '_');
     this.name = name;
     this.fieldSet = fields;
     this.primary = undefined;
@@ -21,7 +16,7 @@ class Table {
         this.primary = {
           key: k,
           fieldName: fields[k].fieldName,
-        }
+        };
       }
       if (fields[k].indexName !== '') {
         this.index[fields[k].indexName] = this.index[fields[k].indexName] || [];
@@ -51,7 +46,7 @@ class Table {
 
     for (let k in this.fieldSet) {
       if (this.fieldSet[k].isPrimary) {
-        this.primary = this.fieldSet[k].fieldName
+        this.primary = this.fieldSet[k].fieldName;
       }
       strings.add([this.fieldSet[k].toString(), EOL]);
     }
@@ -71,15 +66,15 @@ class Table {
     let sql = '';
 
     switch (op) {
-      case 'change':
-        sql = `alter table \`${this.name}\` change \`${this.fieldSet[fieldKey].fieldName}\` ${this.fieldSet[fieldKey].toString(';')}`;
-        break;
-      case 'add':
-        sql = `alter table \`${this.name}\` add  ${this.fieldSet[fieldKey].toString(';')}`;
-        break;
-      case 'drop':
-        sql = `alter table \`${this.name}\` drop \`${fieldKey}\`;`;
-        break;
+    case 'change':
+      sql = `alter table \`${this.name}\` change \`${this.fieldSet[fieldKey].fieldName}\` ${this.fieldSet[fieldKey].toString(';')}`;
+      break;
+    case 'add':
+      sql = `alter table \`${this.name}\` add  ${this.fieldSet[fieldKey].toString(';')}`;
+      break;
+    case 'drop':
+      sql = `alter table \`${this.name}\` drop \`${fieldKey}\`;`;
+      break;
     }
 
     return sql;

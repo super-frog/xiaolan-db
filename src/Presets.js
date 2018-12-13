@@ -1,4 +1,3 @@
-'use strict';
 const Field = require('./Field');
 const AI = {
   id: Field.name('id').bigint(true).primary().AI().comment('数据主键'),
