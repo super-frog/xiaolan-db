@@ -1,6 +1,6 @@
 const mysql = require('fy-mysql');
-const StringBuilder = require('./StringBuilder');
-const Connection = require('./Connection');
+const StringBuilder = require('../../utils/StringBuilder');
+const Connection = require('./connection');
 
 class Migrate {
   constructor(config = null) {

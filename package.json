@@ -10,7 +10,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "fy-mysql": "^0.2.13"
+    "fy-mysql": "^0.2.13",
+    "mongoose": "^5.4.0"
   },
   "devDependencies": {
     "eslint": "^5.10.0"

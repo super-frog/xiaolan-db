@@ -1,7 +1,10 @@
+const DRIVERS = {
+  mysql: require('./drivers/mysql'),
+  mongo: require('./drivers/mongo'),
+};
+
 module.exports = {
-  Field: require('./Field'),
-  Table: require('./Table'),
-  Migrate: require('./Migrate'),
-  Connection: require('./Connection'),
-  Presets: require('./Presets'),
+  mysql: DRIVERS.mysql,
+  mongo: DRIVERS.mongo,
+  ... DRIVERS.mysql, // 
 };

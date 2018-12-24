@@ -1,4 +1,4 @@
-const { Table, Field, Migrate, Presets } = require('../src/index');
+const { Table, Field, Migrate, Presets } = require('../src/index').mysql;
 
 const DB_CONF = {
   DB_HOST: '172.20.160.7',
@@ -11,7 +11,7 @@ const DB_CONF = {
 const tableDemo = new Table('table_demo',{
   ...Presets.AI,
   name: Field.name('demo_name').char(32).uniq().comment('名字'),
-  age: Field.name('demo_age').smallint(true).index('i_age').default(99).comment('年龄'),
+  age: Field.name('demo_ageee').smallint(true).index('i_age').default(99).comment('年龄'),
   ...Presets.opTime,
 });
 

@@ -1,4 +1,4 @@
-const Field = require('./Field');
+const Field = require('./field');
 const AI = {
   id: Field.name('id').bigint(true).primary().AI().comment('数据主键'),
 };

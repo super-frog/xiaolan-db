@@ -1,5 +1,5 @@
 const { EOL } = require('os');
-const StringBuilder = require('./StringBuilder');
+const StringBuilder = require('../../utils/StringBuilder');
 
 class Table {
   constructor(name, fields, options = []) {
