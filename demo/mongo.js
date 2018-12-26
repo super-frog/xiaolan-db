@@ -14,6 +14,12 @@ const df = {
   }
 };
 
-const m = M('ddff', df);
-
-process.exit();
+const m = M(df, 'ddff');
+// console.log(m.find);process.exit();
+m.findOne({}).then(r => {
+  console.log(r);
+  process.exit();
+}).catch(e => {
+  console.log(e);
+  process.exit();
+});
